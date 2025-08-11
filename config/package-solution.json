@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sds-access-code-client-side-solution",
+    "id": "ef08a450-5793-4a04-bc81-0caf177efe13",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "sds-access-code description"
+      },
+      "longDescription": {
+        "default": "sds-access-code description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sds-access-code Feature",
+        "description": "The feature that activates elements of the sds-access-code solution.",
+        "id": "2d6a4770-b68c-47df-a132-3ece3390e710",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sds-access-code.sppkg"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "sds-access-code",
+    "libraryId": "ef08a450-5793-4a04-bc81-0caf177efe13",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "sds-access-code",
+    "solutionShortDescription": "sds-access-code description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
