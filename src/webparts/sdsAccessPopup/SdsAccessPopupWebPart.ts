@@ -22,6 +22,14 @@ export default class SdsAccessPopupWebPart extends BaseClientSideWebPart<ISdsAcc
   private _environmentMessage: string = '';
 
   public render(): void {
+    const searchParams = new URLSearchParams(window.location.search);
+    const sdsCode = searchParams.get('sdsCode');
+    if (!sdsCode || sdsCode.trim() === "") {
+      console.warn("SDS Access: sdsCode is null or empty.");
+    } else {
+      console.log("SDS Access log ...", sdsCode);
+    }
+
     const element: React.ReactElement<ISdsAccessPopupProps> = React.createElement(
       SdsAccessPopup,
       {
