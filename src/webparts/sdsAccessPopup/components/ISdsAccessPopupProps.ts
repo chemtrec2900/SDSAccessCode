@@ -1,7 +1,9 @@
+import { WebPartContext } from "@microsoft/sp-webpart-base";
+
 export interface ISdsAccessPopupProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
+  description: string; 
   hasTeamsContext: boolean;
-  userDisplayName: string;
+  sdsCode: string | null;
+  context: WebPartContext;
+  items: any[];
 }

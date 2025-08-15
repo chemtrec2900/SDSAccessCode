@@ -1,42 +1,77 @@
-import * as React from 'react';
-import styles from './SdsAccessPopup.module.scss';
-import type { ISdsAccessPopupProps } from './ISdsAccessPopupProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import * as React from "react";
+import styles from "./SdsAccessPopup.module.scss";
+import type { ISdsAccessPopupProps } from "./ISdsAccessPopupProps";
+//import { escape } from "@microsoft/sp-lodash-subset";
 
 export default class SdsAccessPopup extends React.Component<ISdsAccessPopupProps> {
   public render(): React.ReactElement<ISdsAccessPopupProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
-
+    const { hasTeamsContext, items, sdsCode } = this.props;
+    console.log("Items ....", this.props.items);
     return (
-      <section className={`${styles.sdsAccessPopup} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
-        </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank" rel="noreferrer">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank" rel="noreferrer">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank" rel="noreferrer">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank" rel="noreferrer">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
+      <section
+        className={`${styles.sdsAccessPopup} ${
+          hasTeamsContext ? styles.teams : ""
+        }`}
+      >
+        {items?.length > 0 ? (
+          <div className={`${styles.sdsAccessPopup}`}>
+            <h1>SDS Access Account Found</h1>
+            <p>You are receiving an inbound call from an SDS Access customer. The SDS Access code they entered was <strong>{sdsCode}</strong>. Links to the customer's 
+            CRM Account record and SDS Emaiil Send Application are below:</p>
+            <p>
+              <strong>CCN:</strong> {items[0].AccountName}
+            </p>
+            <p>
+              <strong>Account Name:</strong> {items[0].AccountName}
+            </p>
+            <p>
+              <strong>SDS Access Code:</strong> {items[0].SDSAccessCode}
+            </p>
+            <p>
+              <strong>SDS Admin:</strong>{" "}
+              <a
+                href="https://sharepoint.chemtrec.com/sdsaccess/admin"
+                target="_blank"
+              >
+                SDS Admin
+              </a>
+            </p>
+            <p>
+              <strong>SDS Access Site:</strong>{" "}
+              <a
+                href={`https://sharepoint.chemtrec.com/sdsaccess/${items[0].Title}`}
+                target="_blank"
+              >
+                {items[0].AccountName} SDS Site
+              </a>
+            </p>
+            <p>
+              <strong>CRM Account Record:</strong>{" "}
+              <a href={`${items[0].CRMAccountRecord}`} target="_blank">
+                {items[0].AccountName} (CRM)
+              </a>
+            </p>
+          </div>
+        ) : (
+          <div className={`${styles.sdsAccessPopup}`}>
+            <h1>SDS Access code not entered or Account not Found</h1>
+            <p>You are receiving an inbound call from a potential SDS Access customer. The SDS Access code they entered was <strong>{sdsCode}</strong>, but could not be verified in CRM.
+            Please ask the caller to confirm their company name/code and then validate their SDS access status on their account in CRM. A link to the SDS Email Send application is below:</p>
+
+            <p>
+              <strong>SDS Access Code:</strong> {sdsCode}
+            </p>
+            <p>
+              <strong>SDS Admin:</strong>{" "}
+              <a
+                href="https://sharepoint.chemtrec.com/sdsaccess/admin"
+                target="_blank"
+              >
+                SDS Admin
+              </a>
+            </p>
+          </div>
+        )}
       </section>
     );
   }
