@@ -25,7 +25,7 @@ export default class SdsAccessPopupWebPart extends BaseClientSideWebPart<ISdsAcc
 
   public render(): void {
     const searchParams = new URLSearchParams(window.location.search);
-    const sdsCode = searchParams.get('sdsCode');
+    const sdsCode = searchParams.get('sdscode');
     if (!sdsCode || sdsCode.trim() === "") {
       console.warn("SDS Access: sdsCode is null or empty.");
     } else {
@@ -49,7 +49,7 @@ export default class SdsAccessPopupWebPart extends BaseClientSideWebPart<ISdsAcc
   protected onInit(): Promise<void> {
     this.spService = new SPServices(this.context)
     const searchParams = new URLSearchParams(window.location.search);
-    const sdsCode = searchParams.get('sdsCode');
+    const sdsCode = searchParams.get('sdscode');
     if (!sdsCode || sdsCode.trim() === "") {
       console.warn("SDS Access: sdsCode is null or empty.");
     } else {

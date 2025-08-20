@@ -3,7 +3,7 @@
   "solution": {
     "name": "sds-access-code-client-side-solution",
     "id": "ef08a450-5793-4a04-bc81-0caf177efe13",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
