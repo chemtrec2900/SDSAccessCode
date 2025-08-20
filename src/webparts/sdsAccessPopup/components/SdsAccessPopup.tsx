@@ -62,7 +62,7 @@ export default class SdsAccessPopup extends React.Component<ISdsAccessPopupProps
               <strong>SDS Access Code:</strong> {sdsCode}
             </p>
             <p>
-              <strong>SDS Admin:</strong>{" "}
+              <strong>Search and Send SDS via Email:</strong>{" "}
               <a
                 href="https://sharepoint.chemtrec.com/sdsaccess/admin/emailsds.aspx"
                 target="_blank"
